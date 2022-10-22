@@ -9,7 +9,7 @@
 }
 
 .friendImageAndText img {
-    margin: 0px 10px -25px 70px;
+    margin: 0 10px -25px 70px;
 }
 
 .friendText {
@@ -24,11 +24,13 @@
 }
 
 .friendName {
-
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .friendMessageText {
-
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .friendTime {
