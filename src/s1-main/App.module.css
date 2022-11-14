@@ -7,5 +7,8 @@
 }
 
 .hwTitle {
-
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    padding: 71px 0px 47px 70px;
 }
