@@ -5,7 +5,7 @@ type GreetingPropsType = {
     name: string
     setNameCallback: (event: ChangeEvent<HTMLInputElement>)=>void
     addUser: ()=>void
-    onBlur: (event: FocusEvent<HTMLInputElement>)=>void
+    onBlur: ()=>void
     onEnter: (event: KeyboardEvent<HTMLInputElement>)=>void
     error: string
     totalUsers: number
