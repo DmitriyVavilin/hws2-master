@@ -25,9 +25,16 @@
 
 .errorInput {
     border: 3px solid #cc0000;
+    display: inline-block;
+    width: 372px;
+    height: 36px;
+    margin-right: 12px;
 }
 
 .button {
+    border-radius: 5px;
+    width: 100px;
+    height: 37px;
     background-color: #0066CC;
     color: #ffffff;
     padding: 8px 5px;
@@ -38,11 +45,10 @@
 }
 
 .button:active {
-    background-color: #0059b3;
+    background-color: #77a0c9;
 }
 
 .button:disabled {
-
 }
 
 .text {

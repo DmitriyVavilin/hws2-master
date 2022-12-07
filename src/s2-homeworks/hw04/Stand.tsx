@@ -30,8 +30,7 @@ const Stand = () => {
                         error={error}
                         onEnter={() => {
                             setError(
-                                stateForAllInputs.trim()
-                                    ? ''
+                                stateForAllInputs.trim() ? ''
                                     : 'Error'
                             )
                             setValue('')
