@@ -22,9 +22,9 @@ function Pages() {
                 {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу /pre-junior*/}
                 {/*<Route ...*/}
                 {/*роуты для /pre-junior, /junior, /junior-plus*/}
-                <Route path={'/pre-junior'} element={<PATH.PRE_JUNIOR/>} />
-                <Route path={'/junior'} element={<PATH.JUNIOR/>} />
-                <Route path={'/junior-plus'} element={<PATH.JUNIOR_PLUS/>} />
+                <Route path={PATH.PRE_JUNIOR} element={<PreJunior/>} />
+                <Route path={PATH.JUNIOR} element={<Junior/>} />
+                <Route path={PATH.JUNIOR_PLUS} element={<JuniorPlus/>} />
                 {/*роут для несуществующей страницы должен отрисовать <Error404 />*/}
                 <Route path={'/*'} element={<Error404/>}/>
             </Routes>
