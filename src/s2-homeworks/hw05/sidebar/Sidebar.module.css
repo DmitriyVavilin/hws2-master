@@ -2,9 +2,11 @@
 }
 
 .sidebar.open {
+    background-color: green;
 }
 
 .background {
+    background-color: yellow;
 }
 
 .nav {
