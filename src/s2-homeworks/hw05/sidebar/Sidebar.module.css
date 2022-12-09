@@ -11,13 +11,17 @@
 }
 
 .nav a {
+    text-decoration: none;
+
 }
 
 .nav a:hover {
 }
 
 .nav a.active {
+    color: #0059B2;
 }
+
 .close {
 }
 
