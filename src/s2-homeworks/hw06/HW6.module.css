@@ -1,5 +1,17 @@
 .buttonsContainer {
+    margin-bottom: 100px;
+    margin-left: 70px;
 }
 
 .editableSpanContainer {
+    margin-left: 70px;
+    margin-bottom: 24px;
+}
+
+.save {
+    margin-right: 24px;
+}
+
+.editableSpanContainer img {
+    margin-right: 10px;
 }

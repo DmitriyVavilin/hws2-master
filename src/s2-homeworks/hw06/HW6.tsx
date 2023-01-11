@@ -19,7 +19,11 @@ const HW6 = () => {
     }
     const restore = () => {
         // делают студенты
-        restoreState<string>('hw6-editable-span-value',value)
+        // setValue(restoreState<string>('hw6-editable-span-value',value))
+        let newValue = localStorage.getItem('hw6-editable-span-value')
+        if(newValue){
+            setValue(JSON.parse(newValue))
+        }
     }
 
     return (
@@ -41,7 +45,7 @@ const HW6 = () => {
                 </div>
 
                 <div className={s.buttonsContainer}>
-                    <SuperButton id={'hw6-save'} onClick={save}>
+                    <SuperButton className={s.save} id={'hw6-save'} onClick={save}>
                         Save to ls
                     </SuperButton>
                     <SuperButton
