@@ -6,11 +6,15 @@ import React, {
 } from 'react'
 import s from './SuperRadio.module.css'
 
-type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>
+type DefaultRadioPropsType = DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+    >
 // тип пропсов обычного спана
-type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>,
-    HTMLSpanElement>
+type DefaultSpanPropsType = DetailedHTMLProps<
+    HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
+    >
 
 type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
     options?: any[]
@@ -32,8 +36,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
                                                    }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         // делают студенты
-        onChangeOption?.(e.currentTarget.value)
-        console.log(e.currentTarget.value)
+        onChangeOption?.(+e.currentTarget.value)
     }
 
     const finalRadioClassName = s.radio + (className ? ' ' + className : '')
@@ -43,18 +46,18 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
         ? options.map((o) => (
             <label key={name + '-' + o.id} className={s.label}>
                 <input
-                    id={id + '-input-' + value}
+                    id={id + '-input-' + o.id}
                     className={finalRadioClassName}
                     type={'radio'}
+                    // name, checked, value делают студенты
+                    value={o.id}
                     name={name}
-                    value={o.value}
-                    checked={o.value===value}
-                    // name, checked, value делают студенты // /
+                    checked={o.id === value}
                     onChange={onChangeCallback}
                     {...restProps}
                 />
                 <span
-                    id={id + '-span-' + value}
+                    id={id + '-span-' + o.id}
                     {...spanProps}
                     className={spanClassName}
                 >
