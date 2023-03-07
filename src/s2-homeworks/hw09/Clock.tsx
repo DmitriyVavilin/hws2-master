@@ -35,7 +35,7 @@ function Clock() {
         second: '2-digit'
     })
     const getDate = new Intl.DateTimeFormat('ru', {
-        year: '2-digit',
+        year: 'numeric',
         month: '2-digit',
         day: '2-digit'
     })
