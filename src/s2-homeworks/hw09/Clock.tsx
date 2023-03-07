@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useState} from 'react'
+import React, {useState} from 'react'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import {restoreState} from '../hw06/localStorage/localStorage'
 import s from './Clock.module.css'
@@ -8,7 +8,6 @@ function Clock() {
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
-    console.log('data', date)
     const start = () => {
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
@@ -28,12 +27,35 @@ function Clock() {
         setShow(false)
     }
 
-    const stringTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = 'date->date' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+
+    const getTime = new Intl.DateTimeFormat('en', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    })
+
+    const getDate = new Intl.DateTimeFormat('re', {
+        year: '2-digit',
+        month: '2-digit',
+        day: '2-digit'
+    })
+
+    const getMonth = new Intl.DateTimeFormat('en', {
+        month: 'long'
+    })
+
+    const getDay = new Intl.DateTimeFormat('en', {
+        weekday: 'long'
+    })
+
+    // const stringTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+    const stringTime = getTime.format(date) || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+    const stringDate = getMonth.format(date) || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = 'date->day' || <br/> // пишут студенты
-    const stringMonth = date.toDateString() || <br/> // пишут студенты
+    const stringDay = getDay.format(date) || <br/> // пишут студенты
+    const stringMonth = getDate.format(date) || <br/> // пишут студенты
 
     return (
         <div className={s.clock}>
