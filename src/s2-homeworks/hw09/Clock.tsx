@@ -17,6 +17,7 @@ function Clock() {
 
     const stop = () => {
         clearInterval(timerId)
+        setTimerId(undefined)
         // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
     }
 
@@ -27,24 +28,20 @@ function Clock() {
         setShow(false)
     }
 
-
     const getTime = new Intl.DateTimeFormat('en', {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
     })
-
-    const getDate = new Intl.DateTimeFormat('re', {
+    const getDate = new Intl.DateTimeFormat('ru', {
         year: '2-digit',
         month: '2-digit',
         day: '2-digit'
     })
-
     const getMonth = new Intl.DateTimeFormat('en', {
         month: 'long'
     })
-
     const getDay = new Intl.DateTimeFormat('en', {
         weekday: 'long'
     })
@@ -54,7 +51,7 @@ function Clock() {
     const stringDate = getMonth.format(date) || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = getDay.format(date) || <br/> // пишут студенты
+    const stringDay = getDay.format(date).toUpperCase() || <br/> // пишут студенты
     const stringMonth = getDate.format(date) || <br/> // пишут студенты
 
     return (
@@ -88,18 +85,20 @@ function Clock() {
 
             <div className={s.buttonsContainer}>
                 <SuperButton
+                    className={s.buttonStart}
                     id={'hw9-button-start'}
-                    disabled={show} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={!!timerId} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
-                    start
+                    Start
                 </SuperButton>
                 <SuperButton
+                    className={s.buttonStop}
                     id={'hw9-button-stop'}
-                    disabled={show} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!timerId} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
-                    stop
+                    Stop
                 </SuperButton>
             </div>
         </div>

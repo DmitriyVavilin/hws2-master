@@ -1,7 +1,10 @@
 .buttonsContainer {
+
 }
 
 .clock {
+    margin-left: 70px;
+    margin-bottom: 100px;
 }
 
 .watch {
@@ -11,4 +14,29 @@
 }
 
 .more {
+    opacity: 60%;
+}
+
+.buttonStart {
+    background-color: #0b5eb6;
+    width: 100px;
+    margin-right: 50px;
+    border-radius: 3px;
+}
+
+.buttonStart:disabled {
+    color: #FFFFFF;
+    opacity: 50%;
+    background-color: #0b5eb6;
+}
+
+.buttonStop{
+    width: 100px;
+    border-radius: 3px;
+}
+
+.buttonStop:disabled {
+    color: #FFFFFF;
+    opacity: 50%;
+    background-color: #0b5eb6;
 }
