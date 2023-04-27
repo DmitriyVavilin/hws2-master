@@ -10,7 +10,7 @@ import errorUnknown from './images/error.svg'
 
 /*
 * 1 - дописать функцию send
-* 2 - дизэйблить кнопки пока идёт запрос
+* 2 - bдизэйблить кнопки пока идёт запрос
 * 3 - сделать стили в соответствии с дизайном
 * */
 
@@ -33,15 +33,33 @@ const HW13 = () => {
 
         axios
             .post(url, {success: x})
-            .then((res) => {
-                setCode('Код 200!')
+            .then((response) => {
+                setCode(response.data.status)
                 setImage(success200)
+                setText(response.data.errorText)
+                setInfo(response.data.info)
                 // дописать
 
             })
             .catch((e) => {
                 // дописать
-
+                if (e.response.status === 400) {
+                    setCode('Код 400!')
+                    setImage(error400)
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                } else if (e.response.status === 500) {
+                    setCode('Код 500!')
+                    setImage(error500)
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                }
+                else {
+                    setCode('Error')
+                    setImage(errorUnknown)
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                }
             })
     }
 
@@ -73,7 +91,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
+                        disabled={info === '...loading'}
 
                     >
                         Send undefined
