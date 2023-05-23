@@ -1,7 +1,13 @@
-.tech {
+.hw {
+    display: block;
+    margin-left: 70px;
+    margin-bottom: 100px;
+}
 
+.tech {
 }
 
 .loading {
-
+    display: block;
+    margin-left: 320px;
 }
