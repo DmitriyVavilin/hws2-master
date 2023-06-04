@@ -58,41 +58,52 @@ const HW15 = () => {
                     setTechs(result)
                 }
 
-                //
+                //setLoading(false)
             })
     }
+
+
+    //const page = searchParams.get('page')
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
         setPage(newPage)
         setCount(newCount)
-        const params = {page: newPage, count: newCount}
-        sendQuery(params)
-        setSearchParams(searchParams)
-        // setPage()
-        // setCount(
+        // const params = {page: newPage, count: newCount}
+        // sendQuery(params)
+        // setSearchParams(searchParams)
 
-        // sendQuery(
-        // setSearchParams(
+        const pageQuery: { page?: string } = newPage !== 1 ? {page: newPage + ''} : {}
+        const countQuery: { count?: string } = newPage !== 1 ? {count: newCount + ''} : {}
 
-        //
+        const {page, count, ...lastQuery} = Object.fromEntries(searchParams)
+        const newQueries = {...lastQuery, ...pageQuery, ...countQuery}
+        sendQuery(newQueries)
+        setSearchParams(newQueries)
+
+
     }
 
     const onChangeSort = (newSort: string) => {
         // делает студент
         setSort(newSort)
         setPage(1)
-        const params = {sort: newSort}
-        sendQuery(params)
-        setSearchParams(searchParams)
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
+
+
+        const sortQuery: {sort?: string} = newSort !== '1' ? {sort: newSort} : {}
+
+        const {sort, ...lastQuery} = Object.fromEntries(searchParams)
+        const newQueries = {...lastQuery,sortQuery}
+
+        sendQuery(newQueries)
+        // setSearchParams(newQueries)
 
         // sendQuery(
         // setSearchParams(
 
         //
     }
+
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
