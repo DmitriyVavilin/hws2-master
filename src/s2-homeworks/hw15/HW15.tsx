@@ -68,6 +68,7 @@ const HW15 = () => {
         setCount(newCount)
         const params = {page: newPage, count: newCount}
         sendQuery(params)
+        setSearchParams(searchParams)
         // setPage()
         // setCount(
 
@@ -79,7 +80,11 @@ const HW15 = () => {
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-
+        setSort(newSort)
+        setPage(1)
+        const params = {sort: newSort}
+        sendQuery(params)
+        setSearchParams(searchParams)
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
 
