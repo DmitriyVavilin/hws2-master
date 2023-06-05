@@ -93,10 +93,10 @@ const HW15 = () => {
         const sortQuery: {sort?: string} = newSort !== '1' ? {sort: newSort} : {}
 
         const {sort, ...lastQuery} = Object.fromEntries(searchParams)
-        const newQueries = {...lastQuery,sortQuery}
+        const newQueries = {...lastQuery,...sortQuery}
 
-        sendQuery({page: 1, count: count, sort: newSort})
-        setSearchParams({sort: newSort, page: "1", count: String(count)})
+        sendQuery(newQueries)
+        setSearchParams(newQueries)
         // setSearchParams(newQueries)
 
         // sendQuery(
