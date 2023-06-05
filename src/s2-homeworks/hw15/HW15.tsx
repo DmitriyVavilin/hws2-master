@@ -69,40 +69,24 @@ const HW15 = () => {
         // делает студент
         setPage(newPage)
         setCount(newCount)
-        // const params = {page: newPage, count: newCount}
-        // sendQuery(params)
-        // setSearchParams(searchParams)
-
         const pageQuery: { page?: string } = newPage !== 1 ? {page: newPage + ''} : {}
-        const countQuery: { count?: string } = newPage !== 1 ? {count: newCount + ''} : {}
+        const countQuery: { count?: string } = newCount &&  newCount !== 4 ? {count: newCount + ''} : {}
 
         const {page, count, ...lastQuery} = Object.fromEntries(searchParams)
         const newQueries = {...lastQuery, ...pageQuery, ...countQuery}
         sendQuery(newQueries)
         setSearchParams(newQueries)
-
-
     }
 
     const onChangeSort = (newSort: string) => {
         // делает студент
         setSort(newSort)
         setPage(1)
-
-
-        const sortQuery: {sort?: string} = newSort !== '1' ? {sort: newSort} : {}
-
+        const sortQuery: {sort?: string} = newSort ? {sort: newSort} : {}
         const {sort, ...lastQuery} = Object.fromEntries(searchParams)
         const newQueries = {...lastQuery,...sortQuery}
-
         sendQuery(newQueries)
         setSearchParams(newQueries)
-        // setSearchParams(newQueries)
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
     }
 
 
